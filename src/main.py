@@ -1,6 +1,7 @@
 import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
+from prometheus_fastapi_instrumentator import Instrumentator
 from src.config.logger import setup_logging
 from src.config.settings import Settings
 
@@ -18,6 +19,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan, title=settings.APP_NAME)
 logger = logging.getLogger("main")
+
+Instrumentator().instrument(app).expose(app)
 
 
 @app.get("/")
