@@ -1,3 +1,3 @@
 ## FastAPI Grafana
 
-A FastAPI application for Grafana.
+A FastAPI application for Grafana Observability.
